@@ -3,7 +3,8 @@ This is a cloudflare ddns integration.
 
 ## Usage
 
-This will only work if you host your dns with cloudflare.
+> [!WARNING]
+> This will only work if you host your dns with cloudflare.
 
 The app will run on an interval that you set or default to 5 minutes. 
 It will check your public ip via the url 'https://cloudflare.com/cdn-cgi/trace' and update the record if it has changed.
