@@ -31,10 +31,12 @@ sudo mkdir /etc/cfddns
 
 sudo touch /home/cfddns/.env
 
-echo "CF_TOKEN=REPLACEME" | sudo tee /etc/cfddns/.env
-echo "RECORD_NAME=foo.bar.example.com" | sudo tee /etc/cfddns/.env
-echo "INTERVAL=5m" | sudo tee /etc/cfddns/.env
-echo "PROXIED=1" | sudo tee /etc/cfddns/.env
+sudo tee -a /etc/cfddns/.env <<EOF
+CF_TOKEN=REPLACEME
+RECORD_NAME=foo.bar.example.com
+INTERVAL=5m
+PROXIED=1
+EOF
 
 sudo chown cfddns:cfddns -R /home/cfddns
 
