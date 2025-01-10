@@ -50,7 +50,7 @@ podman run -d \
     -e RECORD_NAME=foo.bar.example.com \
     -e INTERVAL=5m \
     -e PROXIED=1 \
-    ghcr.io/robertscherzer/cloudflare-ddns:latest
+    ghcr.io/deltxprt/cloudflare-ddns:latest
 ```
 
 #### Podman Quadlet
@@ -66,14 +66,14 @@ docker run -d \
     -e RECORD_NAME=foo.bar.example.com \
     -e INTERVAL=5m \
     -e PROXIED=1 \
-    ghcr.io/robertscherzer/cloudflare-ddns:latest
+    ghcr.io/deltxprt/cloudflare-ddns:latest
 ```
 
 #### Docker Compose
 ```yaml
 services:
     cloudflare-ddns:
-        image: ghcr.io/robertscherzer/cloudflare-ddns:latest
+        image: ghcr.io/deltxprt/cloudflare-ddns:latest
         container_name: cloudflare-ddns
         restart: unless-stopped
         environment:
