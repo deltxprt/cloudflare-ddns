@@ -1,0 +1,7 @@
+.env
+# Added by goreleaser init:
+dist/
+
+# remove idea files
+.idea/
+*.iml
