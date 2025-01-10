@@ -5,6 +5,9 @@ This is a cloudflare ddns integration.
 
 This will only work if you host your dns with cloudflare.
 
+The app will run on an interval that you set or default to 5 minutes. 
+It will check your public ip via the url 'https://cloudflare.com/cdn-cgi/trace' and update the record if it has changed.
+
 ## Configurations
 
 ### Cloudflare Token
@@ -20,6 +23,10 @@ You will need to create a token with the following permissions:
 ## Installation
 
 ### Linux
+quick install
+```bash
+curl -s https://raw.githubusercontent.com/deltxprt/cloudflare-ddns/refs/heads/master/install.sh | bash
+```
 
 #### SystemD Service
 ```bash
@@ -30,11 +37,7 @@ After=network.target
 [service]
 Type=simple
 User=cfddns
-Group=cfddns
-Environment=CF_TOKEN=your_token
-Environment=RECORD_NAME=foo.bar.example.com
-Environment=INTERVAL=5m
-Environment=PROXIED=1
+EnvironmentFile=/etc/cfddns/.env
 ExecStart=/usr/bin/cloudflare-ddns
 
 [install]
@@ -90,3 +93,11 @@ services:
           - INTERVAL=5m
           - PROXIED=1
 ```
+
+# Troubleshooting
+
+## Logs
+You can view the logs by running `journalctl -u cloudflare-ddns`
+
+## Issues
+If you have any issues, please open an issue on the github repo.
