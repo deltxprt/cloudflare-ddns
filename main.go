@@ -73,6 +73,15 @@ func main() {
 		logger.Error("RECORD_NAME is required")
 		os.Exit(1)
 	}
+
+	proxied := os.Getenv("PROXIED")
+	proxy := false
+	if proxied == "" || proxied == "0" {
+		proxy = false
+	} else {
+		proxy = true
+	}
+
 	interval := os.Getenv("INTERVAL")
 
 	if interval == "" {
@@ -123,12 +132,11 @@ func main() {
 		if len(records) == 0 {
 			logger.Info("No records found for: ", ip)
 			logger.Info("Creating new record")
-			proxied := true
 			newRecord := cloudflare.CreateDNSRecordParams{
 				Content: ip,
 				Name:    recordName,
 				Type:    "A",
-				Proxied: &proxied,
+				Proxied: &proxy,
 			}
 
 			logger.Info("Record creation info: ", newRecord)
