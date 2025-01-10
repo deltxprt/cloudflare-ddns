@@ -1,4 +1,6 @@
 #!/bin/bash
+set -e
+
 echo "Installing cloudflare-ddns..."
 
 # Get latest release
@@ -29,8 +31,6 @@ sudo chown cfddns:cfddns /usr/local/bin/cloudflare-ddns
 echo "Creating config file..."
 sudo mkdir /etc/cfddns
 
-sudo touch /home/cfddns/.env
-
 sudo tee -a /etc/cfddns/.env <<EOF
 CF_TOKEN=REPLACEME
 RECORD_NAME=foo.bar.example.com
@@ -42,7 +42,7 @@ sudo chown cfddns:cfddns -R /home/cfddns
 
 # create systemd service
 echo "Creating systemd service..."
-wget -O /etc/systemd/system/cf-ddns.service "https://raw.githubusercontent.com/deltxprt/cloudflare-ddns/refs/tags/${latest}/cf-ddns.service"
+sudo wget -O /etc/systemd/system/cf-ddns.service "https://raw.githubusercontent.com/deltxprt/cloudflare-ddns/refs/tags/${latest}/cf-ddns.service"
 
 echo "Installation complete. Please edit /etc/cfddns/.env with your Cloudflare API token and desired settings."
 echo "Then run 'systemctl enable cf-ddns && systemctl start cf-ddns' to start the service."

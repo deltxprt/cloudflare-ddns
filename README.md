@@ -27,7 +27,10 @@ quick install
 ```bash
 curl -s https://raw.githubusercontent.com/deltxprt/cloudflare-ddns/refs/heads/master/install.sh | bash
 ```
-
+quick unistall
+```bash
+curl -s https://raw.githubusercontent.com/deltxprt/cloudflare-ddns/refs/heads/master/uninstall.sh | bash
+```
 #### SystemD Service
 ```bash
 [unit]
