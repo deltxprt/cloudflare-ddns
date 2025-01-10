@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"github.com/cloudflare/cloudflare-go"
 	"golang.org/x/net/context"
+	"io"
+	"log"
 	"log/slog"
 	"net/http"
 	"os"
@@ -27,7 +29,12 @@ func getIpAddr() (string, error) {
 		return "", err
 	}
 
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		err := Body.Close()
+		if err != nil {
+			log.Println("Error while closing response body", err)
+		}
+	}(resp.Body)
 
 	scanner := bufio.NewScanner(resp.Body)
 
