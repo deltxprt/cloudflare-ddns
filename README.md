@@ -90,3 +90,6 @@ You can view the logs by running `journalctl -u cloudflare-ddns`
 
 ## Issues
 If you have any issues, please open an issue on the github repo.
+
+# Contributing
+I'm open to suggestions and contributions. Feel free to open a PR or issue! 
