@@ -1,0 +1,14 @@
+[Unit]
+Description=Cloudflare Dynamic DNS Updater
+After=network-online.target
+
+[Service]
+Type=simple
+User=cfddns
+ExecStart=/usr/local/bin/cloudflare-ddns
+Restart=always
+RestartSec=5
+EnvironmentFile=/etc/cfddns/.env
+
+[Install]
+WantedBy=multi-user.target
