@@ -33,22 +33,7 @@ quick unistall
 curl -s https://raw.githubusercontent.com/deltxprt/cloudflare-ddns/refs/heads/master/uninstall.sh | bash
 ```
 #### SystemD Service
-```bash
-[unit]
-Description=Cloudflare DDNS
-After=network.target
-
-[service]
-Type=simple
-User=cfddns
-EnvironmentFile=/etc/cfddns/.env
-ExecStart=/usr/bin/cloudflare-ddns
-
-[install]
-WantedBy=multi-user.target
-
-```
-soon
+see [cf-ddns.service](cf-ddns.service)
 
 ### Windows
 
